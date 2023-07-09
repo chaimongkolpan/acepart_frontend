@@ -112,7 +112,7 @@
                   </div>
                   <div class="col-6 mt-3">
                     <label>วัตถุประสงค์ในการใช้งาน</label> 
-                    <textarea class="form-control" name="" id="" cols="30" rows="6"></textarea>
+                    <textarea class="form-control" name="" id="" cols="30" rows="1"></textarea>
                   </div>
                   <div class="col-6 mt-3">
                     <label>อัปโหลดรูปเส้นทาง</label> 
@@ -120,27 +120,36 @@
                   </div>
                   <div class="col-12 mt-3">
                     <hr>
-                    <label>ค่าทางด่วน</label> 
+                    <label>ค่าเดินทาง</label> 
                     <div class="form-row">
-                      <div class="col">
-                        <label for="">ใบที่ 1</label>
-                        <input type="text" class="form-control" placeholder="ใบที่ 1" value="100">
+                      <div class="col-3">
+                        <label for="">เส้นทางที่ 1</label><br>
+                        <label for="">เริ่มต้น</label>
+                        <select class="form-control" name="" id="">
+                          <option value="">เลือก...</option>
+                        </select>
+                        <label for="">ปลายทาง</label>
+                        <select class="form-control" name="" id="">
+                          <option value="">เลือก...</option>
+                        </select>
+                        <label for="">ค่าใช้จ่าย</label>
+                        <input type="text" class="form-control" placeholder="" value="">
                       </div>
-                      <div class="col">
-                        <label for="">ใบที่ 2</label>
-                        <input type="text" class="form-control" placeholder="ใบที่ 2">
+                      <div class="col-3">
+                        <label for="">เส้นทางที่ 2</label><br>
+                        <label for="">เริ่มต้น</label>
+                        <select class="form-control" name="" id="">
+                          <option value="">เลือก...</option>
+                        </select>
+                        <label for="">ปลายทาง</label>
+                        <select class="form-control" name="" id="">
+                          <option value="">เลือก...</option>
+                        </select>
+                        <label for="">ค่าใช้จ่าย</label>
+                        <input type="text" class="form-control" placeholder="" value="">
                       </div>
-                      <div class="col">
-                        <label for="">ใบที่ 3</label>
-                        <input type="text" class="form-control" placeholder="ใบที่ 3">
-                      </div>
-                      <div class="col">
-                        <label for="">ใบที่ 4</label>
-                        <input type="text" class="form-control" placeholder="ใบที่ 4">
-                      </div>
-                      <div class="col">
-                        <label for="">รวม</label>
-                        <input type="text" class="form-control" placeholder="" value="100" readonly>
+                      <div class="col-3 d-flex">
+                        <button class="btn btn-block btn-outline-info align-self-center" type="button">เพิ่มเส้นทาง</button>
                       </div>
                     </div>
                   </div>
