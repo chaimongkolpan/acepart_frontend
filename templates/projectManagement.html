@@ -94,8 +94,10 @@
                   <tr>
                     <th>Project No</th>
                     <th>Project</th>
-                    <th>BOQ Budget</th>
+                    <th>Expense</th>
+                    <th>Remaining</th>
                     <th>Created Date</th>
+                    <th>End Date</th>
                     <th>Status</th>
                     <th>Actions</th>
                   </tr>
@@ -105,7 +107,9 @@
                     <th>0001</th>
                     <td><a href="projectDetail.html" class="text-primary">Project 1</a></td>
                     <td>1,000,0000</td>
+                    <td>500,000</td>
                     <td>25/02/2021</td>
+                    <td>25/02/2022</td>
                     <td><span class="badge badge-success">Completed</span></td>
                     <td class="text-right">
                       <div class="btn-group" role="group" aria-label="actionsButton">
@@ -121,7 +125,9 @@
                     <th>0002</th>
                     <td><a href="projectDetail.html" class="text-primary">Project 2</a></td>
                     <td>1,000,0000</td>
+                    <td>500,000</td>
                     <td>12/03/2021</td>
+                    <td>12/03/2022</td>
                     <td><span class="badge badge-warning">In Progress</span></td>
                     <td class="text-right">
                       <div class="btn-group" role="group" aria-label="actionsButton">
@@ -137,7 +143,9 @@
                     <th>0003</th>
                     <td><a href="projectDetail.html" class="text-primary">Project 3</a></td>
                     <td>1,000,0000</td>
+                    <td>500,000</td>
                     <td>16/02/2021</td>
+                    <td>16/02/2023</td>
                     <td><span class="badge badge-success">Completed</span></td>
                     <td class="text-right">
                       <div class="btn-group" role="group" aria-label="actionsButton">
@@ -153,7 +161,9 @@
                     <th>0004</th>
                     <td><a href="projectDetail.html" class="text-primary">Project 4</a></td>
                     <td>1,000,0000</td>
+                    <td>500,000</td>
                     <td>16/03/2021</td>
+                    <td>16/03/2022</td>
                     <td><span class="badge badge-warning">In Progress</span></td>
                     <td class="text-right">
                       <div class="btn-group" role="group" aria-label="actionsButton">
@@ -169,7 +179,9 @@
                     <th>0005</th>
                     <td><a href="projectDetail.html" class="text-primary">Project 5</a></td>
                     <td>1,000,0000</td>
+                    <td>500,000</td>
                     <td>18/01/2021</td>
+                    <td>18/01/2023</td>
                     <td><span class="badge badge-success">Completed</span></td>
                     <td class="text-right">
                       <div class="btn-group" role="group" aria-label="actionsButton">
@@ -185,7 +197,9 @@
                     <th>0006</th>
                     <td><a href="projectDetail.html" class="text-primary">Project 6</a></td>
                     <td>1,000,0000</td>
+                    <td>500,000</td>
                     <td>12/03/2021</td>
+                    <td>12/03/2024</td>
                     <td><span class="badge badge-warning">In Progress</span></td>
                     <td class="text-right">
                       <div class="btn-group" role="group" aria-label="actionsButton">
@@ -199,14 +213,16 @@
                   </tr>
                 </tbody>
                 <tfoot>
-                  <tr>
-                    <th>Letter ID</th>
+                  <!-- <tr>
+                    <th>Project No</th>
                     <th>Project</th>
-                    <th>BOQ Budget</th>
+                    <th>Expense</th>
+                    <th>Remaining</th>
                     <th>Created Date</th>
+                    <th>End Date</th>
                     <th>Status</th>
                     <th>Actions</th>
-                  </tr>
+                  </tr> -->
                 </tfoot>
               </table>
             </div>
@@ -226,29 +242,7 @@
         order: [[0, 'desc']],
         "oLanguage": {
           "sEmptyTable": "ไม่มีรายการ IOU ที่ถูกเพิ่ม"
-        },
-        initComplete: function () {
-          this.api()
-            .columns()
-            .every(function () {
-              var column = this;
-              var select = $('<select><option value=""></option></select>')
-                .appendTo($(column.footer()).empty())
-                .on('change', function () {
-                  var val = $.fn.dataTable.util.escapeRegex($(this).val());
-
-                  column.search(val ? '^' + val + '$' : '', true, false).draw();
-                });
-
-              column
-                .data()
-                .unique()
-                .sort()
-                .each(function (d, j) {
-                  select.append('<option value="' + d + '">' + d + '</option>');
-                });
-            });
-        },
+        }
       });
     });
   </script>
