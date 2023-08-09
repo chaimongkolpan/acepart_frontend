@@ -19,10 +19,15 @@
   <!-- Bootstrap core CSS -->
   <link href="../static/css/bootstrap.css" rel="stylesheet" th:href="@{/css/bootstrap.css}" />
   <link rel="stylesheet" href="../static/custom.css">
+  <link rel="stylesheet" href="../static/lib/DataTables/datatables.min.css">
+  <link rel="stylesheet" href="../static/lib/bss/css/bootstrap-select.min.css">
 
   <script src="https://cdn.jsdelivr.net/npm/chart.js@4.3.0/dist/chart.umd.min.js"></script>
   <script
     src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@2.2.0/dist/chartjs-plugin-datalabels.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfobject/2.2.12/pdfobject.min.js"
+      integrity="sha512-lDL6DD6x4foKuSTkRUKIMQJAoisDeojVPXknggl4fZWMr2/M/hMiKLs6sqUvxP/T2zXdrDMbLJ0/ru8QSZrnoQ=="
+      crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
   <style>
     .list-group-item {
@@ -32,6 +37,7 @@
   <script>
     $(function () {
       $("#nav-placeholder").load("navbar.html");
+      $("#sidenav-placeholder").load("projectSideNav.html");
     });
   </script>
 </head>
@@ -41,214 +47,120 @@
 
   <div class="container-fluid">
     <div class="row p-3">
-      <div class="col-xl-2 col-lg-2 col-md-12 col-sm-12">
-        <div class="card bg-dark text-white">
-          <div class="card-body" style="background-color: rgba(0, 0, 0, 0.3);">
-            <div class="d-flex flex-column">
-              <h5><i class="bi bi-clipboard2-check"></i> Project Management</h5>
-            </div>
-            <ul class="menu-list flex-grow-1 mt-3 list-unstyled">
-              <li class="collapsed">
-                <a class="m-link active" data-bs-toggle="collapse" data-bs-target="#dashboard-Components" href="#">
-                  <i class="icofont-home fs-5"></i> <span>Dashboard</span> <span
-                    class="arrow icofont-dotted-down ms-auto text-end fs-5"></span></a>
-                <!-- Menu: Sub menu ul -->
-                <ul class="sub-menu collapse show" id="dashboard-Components">
-                  <li><a class="ms-link" href="projectDetail.html">
-                      <span>Project Dashboard</span></a></li>
-                </ul>
-              </li>
-              <li class="collapsed">
-                <a class="m-link" data-bs-toggle="collapse" data-bs-target="#project-Components" href="#"
-                  aria-expanded="true">
-                  <i class="icofont-briefcase"></i><span>Projects</span> <span
-                    class="arrow icofont-dotted-down ms-auto text-end fs-5"></span></a>
-                <!-- Menu: Sub menu ul -->
-                <ul class="sub-menu collapse show" id="project-Components" style="">
-                  <li><a class="ms-link" href="#"><span>Projects</span></a>
-                  </li>
-                  <li><a class="ms-link" href="boq.html"><span>BOQ</span></a>
-                  </li>
-                </ul>
-              </li>
-            </ul>
-          </div>
-        </div>
+      <div id="sidenav-placeholder" class="col-xl-2 col-lg-2 col-md-12 col-sm-12">
       </div>
-      <div class="col-xl-7 col-lg-7 col-md-12 col-sm-12">
-        <div class="row">
-          <div class="col-xl-6 col-md-12">
-            <div class="card h-100">
-              <div class="card-body">
-                <h5>Project Name 1</h5>
-                <div class="row">
-                  <div class="col-lg-6 col-md-12">
-                    <div class="card my-3">
-                      <div class="card-body">
-                        <h3 class="font-weight-bold"><i class="bi bi-check2-square"></i></h3>
-                        <h5>Attendance</h5>
-                        <h5 class="text-muted">400</h5>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="col-lg-6 col-md-12">
-                    <div class="card my-3">
-                      <div class="card-body">
-                        <h3 class="font-weight-bold"><i class="bi bi-clock"></i></h3>
-                        <h5>Time Progess</h5>
-                        <h5 class="text-muted">400</h5>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="col-lg-6 col-md-12">
-                    <div class="card my-3">
-                      <div class="card-body">
-                        <h3 class="font-weight-bold"><i class="bi bi-clock"></i></h3>
-                        <h5>Absent</h5>
-                        <h5 class="text-muted">0%</h5>
-                      </div>
-                    </div>
-                  </div>
+      <div class="col-xl-10 col-lg-10 col-md-12 col-sm-12">
+        <div class="card w-100 h-100">
+          <div class="card-body">
+            <h3>Edit Project</h3>
+            <hr> 
+            <form action="#" method="#">
+              <div class="row">
+                <div class="col-xl-4 col-lg-4 col-md-6 col-sm-12">
+                  <label class="mt-3" for="ProjectID">Project ID</label>
+                  <input class="form-control" type="text" name="ProjectID" id="ProjectID" required>
+                </div>
+                <div class="col-xl-8 col-lg-8 col-md-6 col-sm-12">
+                  <label class="mt-3" for="ProjectName">Project Name</label>
+                  <input class="form-control" type="text" name="ProjectName" id="ProjectName" required>
+                </div>
+                <div class="col-xl-4 col-lg-4 col-md-6 col-sm-12">
+                  <label class="mt-3" for="ProjectID">BOQ ID</label>
+                  <input class="form-control" type="text" name="boqID" id="boqID" required>
+                </div>
+                <div class="col-xl-4 col-lg-4 col-md-6 col-sm-12">
+                  <label class="mt-3" for="ProjectID">Start Date</label>
+                  <input class="form-control" type="date" name="startDate" id="startDate" required>
+                </div>
+                <div class="col-xl-4 col-lg-4 col-md-6 col-sm-12">
+                  <label class="mt-3" for="endDate">End Date</label>
+                  <input class="form-control" type="date" name="endDate" id="endDate" required>
+                </div>
+                <div class="col-xl-4 col-lg-4 col-md-6 col-sm-12">
+                  <label class="mt-3" for="budget">Budget</label>
+                  <input class="form-control" type="b" name="budget" id="budget" required>
+                </div>
+                <div class="col-xl-4 col-lg-4 col-md-6 col-sm-12">
+                  <label class="mt-3" for="CustomerID">Customer ID</label>
+                  <input class="form-control" type="b" name="CustomerID" id="CustomerID" required>
+                </div>
+                <div class="col-xl-4 col-lg-4 col-md-6 col-sm-12">
+                  <label class="mt-3" for="ProjectID">Project Manager</label>
+                  <select class="form-control" name="pmList" id="pmList" required>
+                    <option value="">Select...</option>
+                    <option value="1">Mr.Wick</option>
+                    <option value="2">Mr.Jhon</option>
+                    <option value="3">Ms.Yukiko</option>
+                  </select>
+                </div>
+                <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12">
+                  <label class="mt-3" for="ProjectID">Project Staffs</label>
+                  <select class="form-control selectpicker" data-live-search="true" name="sfList[]" id="sfList" multiple required>
+                    <option value="1">Koji Shimazu</option>
+                    <option value="2">Akira Shimazu</option>
+                    <option value="3">Marquis Vincent de Gramont</option>
+                    <option value="4">Siwadol Malisorn</option>
+                  </select>
+                </div>
+                <div class="col-12"><hr></div>
+                <div class="col-6">
+                  <button type="button" class="btn btn-primary btn-block" onclick="window.location.href='projectManagement.html'">บันทึกข้อมูล</button>
+                </div>
+                <div class="col-6">
+                  <button type="button" class="btn btn-secondary btn-block" onclick="window.location.href='projectManagement.html'">ย้อนกลับ</button>
                 </div>
               </div>
-            </div>
-          </div>
-          <div class="col-xl-6 col-md-12">
-            <div class="card h-100">
-              <div class="card-body">
-                <h5>BOQ Budget : 45%</h5>
-                <canvas id="boqChart" style="height: 400px;"></canvas>
-              </div>
-            </div>
-          </div>
-          <div class="col-12 mt-3">
-            <div class="card">
-              <div class="card-body">
-                <canvas id="ExpenseChart"></canvas>
-              </div>
-            </div>
+            </form>
           </div>
         </div>
-      </div>
-      <div class="col-xl-3 col-lg-3 col-md-12 col-sm-12">
-        <div class="row">
-          <div class="col-12">
-            <div class="card">
-              <div class="card-body">
-                <h3>BOQ List</h3>
-                <h1>156</h1>
-              </div>
-            </div>
-          </div>
-          <div class="col-12">
-            <div class="card mt-4">
-              <div class="card-body">
-                <h3>Upcomming Expense</h3>
-                <hr>
-              </div>
-            </div>
-          </div>
-        </div>
-
       </div>
     </div>
   </div>
 
 
   <script src="../static/js/bootstrap.bundle.min.js"></script>
-
-  <script>
-    var canvas = document.getElementById('boqChart');
-    var ctx = canvas.getContext('2d');
-
-    new Chart(ctx, {
-      type: 'doughnut',
-      data: {
-        labels: ['Expense', 'Remaining'],
-        datasets: [
-          {
-            data: [45, 55],
-            backgroundColor: ['#36a2eb', '#ff6384'],
-          },
-        ],
-      },
-      options: {
-
-        plugins: {
-          legend: { position: 'bottom' },
-
-          datalabels: {
-            color: 'white', // Customize label color
-            textAlign: 'center',
-            font: {
-              size: 14, // Customize label font size
-            },
-            formatter: function (value, context) {
-              return context.chart.data.labels[context.dataIndex];
-            },
-          },
-        },
-      },
-    });
-  </script>
-  <script>
-    var canvas = document.getElementById('ExpenseChart');
-    var ctx = canvas.getContext('2d');
-
-    // Random x-axis data (months)
-    var months = [
-      'January', 'February', 'March', 'April', 'May', 'June',
-      'July', 'August', 'September', 'October', 'November', 'December'
-    ];
-
-    // Random data for Expense and Forecast
-    var expenseData = getRandomData();
-    var forecastData = getRandomData();
-
-    new Chart(ctx, {
-      type: 'bar',
-      data: {
-        labels: months,
-        datasets: [
-          {
-            label: 'Expense',
-            data: expenseData,
-            backgroundColor: '#ff6384',
-          },
-          {
-            label: 'Forecast',
-            data: forecastData,
-            backgroundColor: '#36a2eb',
-          },
-        ],
-      },
-      options: {
-        plugins: {
-          title: {
-            display: true,
-            text: 'Expenses',
-          },
-        },
-        scales: {
-          x: {
-            stacked: true,
-          },
-          y: {
-            stacked: true,
-            beginAtZero: true,
-          },
-        },
-      },
-    });
-
-    // Function to generate random data
-    function getRandomData() {
-      var data = [];
-      for (var i = 0; i < 12; i++) {
-        data.push(Math.floor(Math.random() * 1000));
-      }
-      return data;
+  <script src="../static/lib/bss/js/bootstrap-select.min.js"></script>
+  <script type="text/javascript">
+    function getUrlVars()
+    {
+        var vars = [], hash;
+        var hashes = window.location.href.slice(window.location.href.indexOf('?') + 1).split('&');
+        for(var i = 0; i < hashes.length; i++)
+        {
+            hash = hashes[i].split('=');
+            vars.push(hash[0]);
+            vars[hash[0]] = hash[1];
+        }
+        return vars;
     }
+    function getData(id) {
+        // get data from api
+        const res = {
+            project_id: "000" + id,
+            name: "Project " + id,
+            boq_id: "010123",
+            start_date: "2022-08-01",
+            end_date: "2023-01-01",
+            budget: "1,000,000.00",
+            customer_id: "2345678",
+            pm_id: "1",
+            staff_id: "2",
+        }
+        return res
+    }
+    $(document).ready(function () {
+        const params = getUrlVars();
+        const data = getData(params.id);
+        $('#ProjectID').val(data.project_id);
+        $('#ProjectName').val(data.name);
+        $('#boqID').val(data.boq_id);
+        $('#startDate').val(data.start_date);
+        $('#endDate').val(data.end_date);
+        $('#budget').val(data.budget);
+        $('#CustomerID').val(data.customer_id);
+        $('#pmList').val(data.pm_id);
+        $('#sfList').val(data.staff_id);
+    });
   </script>
 
 </body>

@@ -36,6 +36,7 @@
     <script>
         $(function () {
             $("#nav-placeholder").load("navbar.html");
+            $("#sidenav-placeholder").load("projectSideNav.html");
         });
     </script>
 </head>
@@ -45,40 +46,7 @@
 
     <div class="container-fluid">
         <div class="row p-3">
-            <div class="col-xl-2 col-lg-2 col-md-12 col-sm-12">
-                <div class="card bg-dark text-white">
-                    <div class="card-body" style="background-color: rgba(0, 0, 0, 0.3);">
-                        <div class="d-flex flex-column">
-                            <h5><i class="bi bi-clipboard2-check"></i> Project Management</h5>
-                        </div>
-                        <ul class="menu-list flex-grow-1 mt-3 list-unstyled">
-                            <li class="collapsed">
-                                <a class="m-link active" data-bs-toggle="collapse"
-                                    data-bs-target="#dashboard-Components" href="#">
-                                    <i class="icofont-home fs-5"></i> <span>Dashboard</span> <span
-                                        class="arrow icofont-dotted-down ms-auto text-end fs-5"></span></a>
-                                <!-- Menu: Sub menu ul -->
-                                <ul class="sub-menu collapse show" id="dashboard-Components">
-                                    <li><a class="ms-link" href="projectDetail.html">
-                                            <span>Project Dashboard</span></a></li>
-                                </ul>
-                            </li>
-                            <li class="collapsed">
-                                <a class="m-link" data-bs-toggle="collapse" data-bs-target="#project-Components"
-                                    href="#" aria-expanded="true">
-                                    <i class="icofont-briefcase"></i><span>Projects</span> <span
-                                        class="arrow icofont-dotted-down ms-auto text-end fs-5"></span></a>
-                                <!-- Menu: Sub menu ul -->
-                                <ul class="sub-menu collapse show" id="project-Components" style="">
-                                    <li><a class="ms-link" href="#"><span>Projects</span></a>
-                                    </li>
-                                    <li><a class="ms-link" href="boq.html"><span>BOQ</span></a>
-                                    </li>
-                                </ul>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
+            <div id="sidenav-placeholder" class="col-xl-2 col-lg-2 col-md-12 col-sm-12">
             </div>
             <div class="col-xl-10 col-lg-10 col-md-12 col-sm-12">
                 <div class="card w-100 h-100">

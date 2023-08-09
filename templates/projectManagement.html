@@ -36,7 +36,13 @@
   <script>
     $(function () {
       $("#nav-placeholder").load("navbar.html");
+      $("#sidenav-placeholder").load("projectSideNav.html");
     });
+    function onDelete(id, name) {
+        if (confirm('คุณยืนยันที่จะลบ ' + name + ' ใช่หรือไม่?')){
+            alert('ลบข้อมูลสำเร็จ')
+        }
+    }
   </script>
 </head>
 
@@ -45,39 +51,7 @@
 
   <div class="container-fluid">
     <div class="row p-3">
-      <div class="col-xl-2 col-lg-2 col-md-12 col-sm-12">
-        <div class="card bg-dark text-white">
-          <div class="card-body" style="background-color: rgba(0, 0, 0, 0.3);">
-            <div class="d-flex flex-column">
-              <h5><i class="bi bi-clipboard2-check"></i> Project Management</h5>
-            </div>
-            <ul class="menu-list flex-grow-1 mt-3 list-unstyled">
-              <li class="collapsed">
-                <a class="m-link active" data-bs-toggle="collapse" data-bs-target="#dashboard-Components" href="#">
-                  <i class="icofont-home fs-5"></i> <span>Dashboard</span> <span
-                    class="arrow icofont-dotted-down ms-auto text-end fs-5"></span></a>
-                <!-- Menu: Sub menu ul -->
-                <ul class="sub-menu collapse show" id="dashboard-Components">
-                  <li><a class="ms-link" href="projectDetail.html">
-                      <span>Project Dashboard</span></a></li>
-                </ul>
-              </li>
-              <li class="collapsed">
-                <a class="m-link" data-bs-toggle="collapse" data-bs-target="#project-Components" href="#"
-                  aria-expanded="true">
-                  <i class="icofont-briefcase"></i><span>Projects</span> <span
-                    class="arrow icofont-dotted-down ms-auto text-end fs-5"></span></a>
-                <!-- Menu: Sub menu ul -->
-                <ul class="sub-menu collapse show" id="project-Components" style="">
-                  <li><a class="ms-link" href="#"><span>Projects</span></a>
-                  </li>
-                  <li><a class="ms-link" href="boq.html"><span>BOQ</span></a>
-                  </li>
-                </ul>
-              </li>
-            </ul>
-          </div>
-        </div>
+      <div id="sidenav-placeholder" class="col-xl-2 col-lg-2 col-md-12 col-sm-12">
       </div>
       <div class="col-xl-10 col-lg-10 col-md-12 col-sm-12">
         <div class="card w-100 h-100">
@@ -89,7 +63,7 @@
                   class="bi bi-plus-circle-fill"></i> Add Project</button>
             </div>
             <div class="table-responsive">
-              <table class="table" id="IOUList">
+              <table class="table" id="TableList">
                 <thead>
                   <tr>
                     <th>Project No</th>
@@ -105,7 +79,7 @@
                 <tbody>
                   <tr>
                     <th>0001</th>
-                    <td><a href="projectDetail.html" class="text-primary">Project 1</a></td>
+                    <td><a href="projectDetail.html?id=1" class="text-primary">Project 1</a></td>
                     <td>1,000,0000</td>
                     <td>500,000</td>
                     <td>25/02/2021</td>
@@ -115,15 +89,14 @@
                       <div class="btn-group" role="group" aria-label="actionsButton">
                         <button type="button" class="btn btn-outline-success"><i class="bi bi-check-circle"></i></button>
                         <button type="button" class="btn btn-outline-danger"><i class="bi bi-x-circle"></i></button>
-                        <button type="button" class="btn btn-outline-warning"><i
-                            class="bi bi-pencil-square"></i></button>
-                        <button type="button" class="btn btn-outline-danger"><i class="bi bi-trash3"></i></button>
+                        <button type="button" class="btn btn-outline-warning" onclick="window.location.href='projectDetail.html?id=1'"><i class="bi bi-pencil-square"></i></button>
+                        <button type="button" class="btn btn-outline-danger" onclick="onDelete(1, 'Project 1')"><i class="bi bi-trash3"></i></button>
                       </div>
                     </td>
                   </tr>
                   <tr>
                     <th>0002</th>
-                    <td><a href="projectDetail.html" class="text-primary">Project 2</a></td>
+                    <td><a href="projectDetail.html?id=2" class="text-primary">Project 2</a></td>
                     <td>1,000,0000</td>
                     <td>500,000</td>
                     <td>12/03/2021</td>
@@ -133,15 +106,14 @@
                       <div class="btn-group" role="group" aria-label="actionsButton">
                         <button type="button" class="btn btn-outline-success"><i class="bi bi-check-circle"></i></button>
                         <button type="button" class="btn btn-outline-danger"><i class="bi bi-x-circle"></i></button>
-                        <button type="button" class="btn btn-outline-warning"><i
-                            class="bi bi-pencil-square"></i></button>
-                        <button type="button" class="btn btn-outline-danger"><i class="bi bi-trash3"></i></button>
+                        <button type="button" class="btn btn-outline-warning" onclick="window.location.href='projectDetail.html?id=2'"><i class="bi bi-pencil-square"></i></button>
+                        <button type="button" class="btn btn-outline-danger" onclick="onDelete(2, 'Project 2')"><i class="bi bi-trash3"></i></button>
                       </div>
                     </td>
                   </tr>
                   <tr>
                     <th>0003</th>
-                    <td><a href="projectDetail.html" class="text-primary">Project 3</a></td>
+                    <td><a href="projectDetail.html?id=3" class="text-primary">Project 3</a></td>
                     <td>1,000,0000</td>
                     <td>500,000</td>
                     <td>16/02/2021</td>
@@ -151,15 +123,14 @@
                       <div class="btn-group" role="group" aria-label="actionsButton">
                         <button type="button" class="btn btn-outline-success"><i class="bi bi-check-circle"></i></button>
                         <button type="button" class="btn btn-outline-danger"><i class="bi bi-x-circle"></i></button>
-                        <button type="button" class="btn btn-outline-warning"><i
-                            class="bi bi-pencil-square"></i></button>
-                        <button type="button" class="btn btn-outline-danger"><i class="bi bi-trash3"></i></button>
+                        <button type="button" class="btn btn-outline-warning" onclick="window.location.href='projectDetail.html?id=3'"><i class="bi bi-pencil-square"></i></button>
+                        <button type="button" class="btn btn-outline-danger" onclick="onDelete(3, 'Project 3')"><i class="bi bi-trash3"></i></button>
                       </div>
                     </td>
                   </tr>
                   <tr>
                     <th>0004</th>
-                    <td><a href="projectDetail.html" class="text-primary">Project 4</a></td>
+                    <td><a href="projectDetail.html?id=4" class="text-primary">Project 4</a></td>
                     <td>1,000,0000</td>
                     <td>500,000</td>
                     <td>16/03/2021</td>
@@ -169,15 +140,14 @@
                       <div class="btn-group" role="group" aria-label="actionsButton">
                         <button type="button" class="btn btn-outline-success"><i class="bi bi-check-circle"></i></button>
                         <button type="button" class="btn btn-outline-danger"><i class="bi bi-x-circle"></i></button>
-                        <button type="button" class="btn btn-outline-warning"><i
-                            class="bi bi-pencil-square"></i></button>
-                        <button type="button" class="btn btn-outline-danger"><i class="bi bi-trash3"></i></button>
+                        <button type="button" class="btn btn-outline-warning" onclick="window.location.href='projectDetail.html?id=4'"><i class="bi bi-pencil-square"></i></button>
+                        <button type="button" class="btn btn-outline-danger" onclick="onDelete(4, 'Project 4')"><i class="bi bi-trash3"></i></button>
                       </div>
                     </td>
                   </tr>
                   <tr>
                     <th>0005</th>
-                    <td><a href="projectDetail.html" class="text-primary">Project 5</a></td>
+                    <td><a href="projectDetail.html?id=5" class="text-primary">Project 5</a></td>
                     <td>1,000,0000</td>
                     <td>500,000</td>
                     <td>18/01/2021</td>
@@ -187,15 +157,14 @@
                       <div class="btn-group" role="group" aria-label="actionsButton">
                         <button type="button" class="btn btn-outline-success"><i class="bi bi-check-circle"></i></button>
                         <button type="button" class="btn btn-outline-danger"><i class="bi bi-x-circle"></i></button>
-                        <button type="button" class="btn btn-outline-warning"><i
-                            class="bi bi-pencil-square"></i></button>
-                        <button type="button" class="btn btn-outline-danger"><i class="bi bi-trash3"></i></button>
+                        <button type="button" class="btn btn-outline-warning" onclick="window.location.href='projectDetail.html?id=5'"><i class="bi bi-pencil-square"></i></button>
+                        <button type="button" class="btn btn-outline-danger" onclick="onDelete(5, 'Project 5')"><i class="bi bi-trash3"></i></button>
                       </div>
                     </td>
                   </tr>
                   <tr>
                     <th>0006</th>
-                    <td><a href="projectDetail.html" class="text-primary">Project 6</a></td>
+                    <td><a href="projectDetail.html?id=6" class="text-primary">Project 6</a></td>
                     <td>1,000,0000</td>
                     <td>500,000</td>
                     <td>12/03/2021</td>
@@ -205,9 +174,8 @@
                       <div class="btn-group" role="group" aria-label="actionsButton">
                         <button type="button" class="btn btn-outline-success"><i class="bi bi-check-circle"></i></button>
                         <button type="button" class="btn btn-outline-danger"><i class="bi bi-x-circle"></i></button>
-                        <button type="button" class="btn btn-outline-warning"><i
-                            class="bi bi-pencil-square"></i></button>
-                        <button type="button" class="btn btn-outline-danger"><i class="bi bi-trash3"></i></button>
+                        <button type="button" class="btn btn-outline-warning" onclick="window.location.href='projectDetail.html?id=6'"><i class="bi bi-pencil-square"></i></button>
+                        <button type="button" class="btn btn-outline-danger" onclick="onDelete(6, 'Project 6')"><i class="bi bi-trash3"></i></button>
                       </div>
                     </td>
                   </tr>
@@ -237,11 +205,11 @@
   <script src="../static/lib/DataTables/datatables.min.js"></script>
   <script type="text/javascript">
     $(document).ready(function () {
-      $('#IOUList').DataTable({
+      $('#TableList').DataTable({
         "ordering": true,
         order: [[0, 'desc']],
         "oLanguage": {
-          "sEmptyTable": "ไม่มีรายการ IOU ที่ถูกเพิ่ม"
+          "sEmptyTable": "ไม่มีรายการ Project ที่ถูกเพิ่ม"
         }
       });
     });
